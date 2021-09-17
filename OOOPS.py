@@ -150,6 +150,113 @@ print(emp_1.fullname)
 
 del emp_1.fullname #print None
 
+----------------------------------
+class SimpleList:
+	def __init__(self,items):
+		self._items = list(items)
+	def add(self,item):
+		self._items.append(item)
+	def __getitem__(self, index):
+		return self._items[index]
+	def sort(self):
+		self._items.sort()
+	def __len__(self):
+		return len(self._items)
+	def __repr__(self):
+		return f'{type(self).__name__}({self._items!r})'
+
+class SortedList(SimpleList):
+	def __init__(self, items=()):
+		super().__init__(items)
+		self.sort()
+	def add(self, item):
+		super().add(items)
+		self.sort()
+class Intlist(SimpleList):
+	def __int__(self, items=()):
+		for x in items: self._validate(x)
+		super().__init__(items)
+	@staticmethod
+	def_validate(x):
+		if not isinstance(x, int):
+			raise TypeError("")
+
+class SortedIntlist(Intlist, SimpleList):
+	pass
+
+---------------------------------
+---------------------------------
+#Super
+
+class Animal:
+	@classmethod
+	def description(cls):
+		return "an animal"
+class bird(Animal):
+	@classmethod
+	def description(cls):
+		s= super().
+		print(s)
+		return s.description()+"ee"
+class Flamingo(Bird):
+	@classmethod
+	def description(cls):
+		return  super().description() + "and"
+
+
+-------------------------
+-------------------------
+#hashable
+@dataclass(eq=true, frozen=true)
+class Location:
+	name: str
+	position: Position
+hong_kong = Location("hong kong", earth(22.2, 113.3)
+#cities = {hong_kong, stockolhm}
+
+=========
+@dataclass(eq=true, frozen=true)
+class Location:
+	name: str
+	position: Position
+	def __post_init__(self):
+		if self.name == "":
+			raise ValueError("dd")
+#
+
+============
+
+============
+class Position:
+	def __init__(self, latitude, longitude):
+		if not (-90 <= latitude <=+90):
+			raise ValueError(f"l{longitude} out of range")
+		if not(-180<=longitude<= +180):
+			raise valueError(f"l{longitude} out of range")
+
+		self._latitude = latitude
+		self._longitude = longitude
+ 	@property
+	def latitude(self):
+		return self._latitude
+		
+	@property
+	def longitude(self):
+		return self._longitude
+	@property
+	def latitude_hemishpere(self):
+		return "N" if self.latitude >= 0 else "S"
+
+	def latitude_hemishpere(self):
+		return "E" if self.latitude >= 0 else "W"	
+
+	def __repr__(self):
+	 	return f"position{self.latitude}{self.longitude}"
+	
+	def __str__(self):
+		return f"{self.latitude}'s, {self.longitude}'E
+	def __format__(self, format_spec):
+		return "Formatted Position"	 
 
 
 
